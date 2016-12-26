@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/main_container"
+    android:background="#000"
+    tools:context="com.myteam.anglecamera.MainActivity">
 
     <Button
-        android:text="测距"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="116dp"
+        android:id="@+id/ceju_btn"
+        android:background="@android:drawable/ic_menu_camera"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="38dp"
-        android:id="@+id/ceju_btn" />
+        android:layout_alignParentStart="true" />
 </RelativeLayout>

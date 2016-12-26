@@ -17,4 +17,10 @@
     <string name="description_info">Info</string>
     <string name="request_permission">This sample needs camera permission.</string>
     <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="print_float">%1$.2f</string>
+    <string name="print_angle">%1$.1f°</string>
+    <string name="print_1_int">%1$d</string>
+    <string name="print_result">%1$.1fm</string>
+
+
 </resources>

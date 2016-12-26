@@ -3,6 +3,16 @@
     package="com.myteam.anglecamera">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <permission android:name="android.permission.SENSOR_ENABLE"
+        android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
+        android:protectionLevel="dangerous"
+        />
+
+    <!-- Allows an application to sensor_info  xiayu -->
+    <permission android:name="android.permission.SENSOR_INFO"
+        android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
+        android:protectionLevel="normal"
+        />
 
     <uses-feature android:name="android.hardware.camera" />
     <uses-feature android:name="android.hardware.camera.autofocus" />
