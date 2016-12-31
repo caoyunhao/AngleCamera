@@ -22,5 +22,7 @@
     <string name="print_1_int">%1$d</string>
     <string name="print_result">%1$.1fm</string>
 
+    <string name="permlab_sensor_enable">permlab_sensor_enable</string>
+
 
 </resources>

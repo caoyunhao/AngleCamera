@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000"
+    tools:context="com.myteam.anglecamera.RangingActivity" >
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/camera_container"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:src="@drawable/ic_action_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"/>
+
+
+
+
+    <TableLayout
+        android:id="@+id/info"
+        android:orientation="vertical"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true">
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/horizontal"
+                android:text="水平： "
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/showInfo"
+                android:textSize="24sp" />
+            <TextView
+                android:id="@+id/horizontal_content"
+                android:text="12°"
+                android:gravity="right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/showInfo"
+                android:textSize="24sp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/vertical"
+                android:text="竖直： "
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/showInfo"
+                android:textSize="24sp"/>
+            <TextView
+                android:id="@+id/vertical_content"
+                android:text="19°"
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/showInfo"
+                android:textSize="24sp"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+            <TextView
+                android:id="@+id/textViewZ"
+                android:text="其他： "
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/showInfo"
+                android:textSize="24sp"/>
+            <TextView
+                android:id="@+id/z_content"
+                android:text="00"
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/showInfo"
+                android:textSize="24sp"/>
+        </TableRow>
+    </TableLayout>
+
+
+
+
+    <TextView
+        android:id="@+id/CS"
+        android:text="CS:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="50dp"
+        android:textSize="30sp"
+        android:layout_alignParentBottom="true"/>
+    <TextView
+        android:id="@+id/RS"
+        android:text="RS:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_above="@id/CS"
+        android:layout_marginLeft="20dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="30sp" />
+
+
+
+    <EditText
+        android:id="@+id/realDisText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:textColor="@android:color/white"
+        android:inputType="numberDecimal"
+        android:layout_toRightOf="@id/RS"
+        android:layout_alignBottom="@id/RS"/>
+    <EditText
+        android:id="@+id/cameraDisText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:textColor="@android:color/white"
+        android:inputType="numberDecimal"
+        android:layout_alignBottom="@id/CS"
+        android:layout_alignStart="@id/realDisText" />
+    <TextView
+        android:id="@+id/result"
+        android:text="result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:layout_toRightOf="@id/realDisText"
+        android:layout_alignTop="@id/realDisText"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="60dp"
+        android:textSize="24sp" />
+    <ImageButton
+        android:id="@+id/calculate_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_media_ff"
+        android:layout_toRightOf="@id/cameraDisText"
+        android:layout_alignTop="@id/cameraDisText"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="60dp"/>
+
+    <SeekBar
+        android:rotation="-90"
+        android:id="@+id/disScale"
+        android:max="300"
+        android:progress="100"
+        android:maxHeight="5.0dp"
+        android:minHeight="5.0dp"
+        android:layout_above="@id/result"
+        android:layout_alignEnd="@id/info"
+        android:layout_marginBottom="150dp"
+        android:layout_marginRight="-120dp"
+        android:layout_height="25dp"
+        android:layout_width="300dp" />
+
+
+</RelativeLayout>

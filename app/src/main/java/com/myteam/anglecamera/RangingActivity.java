@@ -20,12 +20,17 @@ import android.widget.TextView;
  * Created by Cao on 2016/12/19.
  */
 
-public class CameraActivity extends Activity implements SensorEventListener {
+public class RangingActivity
+        extends Activity
+        implements SensorEventListener
+{
 
     static final String TAG = "CameraActivity";
 
     private SensorManager sensorManager;
     private Sensor accelerometerSensor;
+//    private Sensor gyroscopeSensor;
+//    private Sensor magneticSensor;
 
     private TextView showTextViewX;
     private TextView showTextViewY;
@@ -52,36 +57,70 @@ public class CameraActivity extends Activity implements SensorEventListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_camera);
+        setContentView(R.layout.activity_ranging);
 
         getFragmentManager().beginTransaction()
-                .replace(R.id.container, Camera2BasicFragment.newInstance())
+                .replace(R.id.camera_container, Camera2BasicFragment.newInstance("0"))
                 .commit();
 
         realDisText = (EditText) findViewById(R.id.realDisText);
         cameraDisText = (EditText) findViewById(R.id.cameraDisText);
         showResult = (TextView)findViewById(R.id.result);
-        calculateBtn = (ImageButton) findViewById(R.id.imageButton2);
-        Log.i(TAG,"1");
-        calculateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                realDistance = Float.parseFloat(realDisText.getText().toString());
-                cameraDistance = Float.parseFloat(cameraDisText.getText().toString());
-                result = (realDistance / cameraDistance) * scale * 1.0f;
-                showResult.setText(getString(R.string.print_result,result));
-            }
-        });
-        Log.i(TAG,"1231111111111");
+        calculateBtn = (ImageButton) findViewById(R.id.calculate_btn);
+
+        if(calculateBtn != null){
+            calculateBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    realDistance = Float.parseFloat(realDisText.getText().toString());
+                    cameraDistance = Float.parseFloat(cameraDisText.getText().toString());
+                    result = (realDistance / cameraDistance) * scale * 1.0f;
+                    showResult.setText(getString(R.string.print_result,result));
+                }
+            });
+        }
+        if(realDisText == null){
+            Log.i(TAG, "realDisText == null");
+        }
+
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
-            accelerometerSensor = sensorManager
-                    .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-            sensorManager.registerListener(this, accelerometerSensor,
-                    SensorManager.SENSOR_DELAY_GAME);
+        accelerometerSensor = sensorManager
+                .getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        sensorManager.registerListener(this, accelerometerSensor,
+                SensorManager.SENSOR_DELAY_GAME);
+//        magneticSensor = sensorManager
+//                .getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+//        gyroscopeSensor = sensorManager
+//                .getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+//        sensorManager.registerListener(this, gyroscopeSensor,
+//                SensorManager.SENSOR_DELAY_GAME);
+//        sensorManager.registerListener(this, magneticSensor,
+//                SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+    }
+
+    //@Override
     public void onSensorChanged(SensorEvent event) {
+        if(showTextViewX == null){
+            Log.i(TAG, "showTextViewX == null");
+        }
+        if(calculateBtn == null){
+            calculateBtn = (ImageButton) findViewById(R.id.calculate_btn);
+            calculateBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    realDistance = Float.parseFloat(realDisText.getText().toString());
+                    cameraDistance = Float.parseFloat(cameraDisText.getText().toString());
+                    result = (realDistance / cameraDistance) * scale * 1.0f;
+                    showResult.setText(getString(R.string.print_result,result));
+                }
+            });
+        }
+
         showTextViewX = (TextView) findViewById(R.id.horizontal_content);
         showTextViewY = (TextView) findViewById(R.id.vertical_content);
         showTextViewZ = (TextView) findViewById(R.id.z_content);
@@ -97,7 +136,7 @@ public class CameraActivity extends Activity implements SensorEventListener {
         }
     }
 
-    @Override
+    //@Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
     }
